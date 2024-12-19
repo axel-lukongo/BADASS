@@ -1,0 +1,13 @@
+# Building on top of FRR, a free IP routing suite that fits our needs and comes with zebra and many other services
+FROM frrouting/frr:latest
+
+# Create blank placeholder general config file
+RUN touch /etc/frr/frr.conf
+
+# Configure VTYSH to use general config file to dispatch service parameters
+RUN echo "service integrated-vtysh-config" > /etc/frr/vtysh.conf
+
+# Turn on each additionally required service
+RUN sed -i 's/bgpd=no/bgpd=yes/' /etc/frr/daemons
+RUN sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+RUN sed -i 's/isisd=no/isisd=yes/' /etc/frr/daemons

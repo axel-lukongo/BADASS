@@ -1,0 +1,2 @@
+# Subject tells us to create buildable images but for this one we just need standard Alpine
+FROM alpine:latest
