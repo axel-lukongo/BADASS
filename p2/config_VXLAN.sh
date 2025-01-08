@@ -13,10 +13,10 @@ brctl addif br0 vxlan10
 
 if [ "$router_id" -eq 1 ]; then
 	ip addr add 10.1.1.1/24 dev eth0 # it just to config 
-	ip addr add 192.168.1.1/24 dev br0
+	ip addr add 30.1.1.1/24 dev br0
 else
 	ip addr add 10.1.1.2/24 dev eth0 # it just to config 
-	ip addr add 192.168.1.2/24 dev br0
+	ip addr add 30.1.1.2/24 dev br0
 fi
 ip link set dev br0 up
 ip link set dev vxlan10 up
